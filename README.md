@@ -124,8 +124,8 @@ Domain and Key
 
 In the above image,  
 
-        Domain Name : *chandankr*   
-        Api Key     : *abrakadabra*
+        Domain Name : chandankr   
+        Api Key     : abrakadabra
 
 
 Examples
