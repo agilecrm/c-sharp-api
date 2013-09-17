@@ -120,7 +120,11 @@ This is used to return the template of the gadget with name `gadget`.
 Domain and Key
 --------------
 
-![Alt text] (https://raw.github.com/agilecrm/c-sharp-api/master/sample_image.png)
+![Finding Domain name and api key] (https://raw.github.com/agilecrm/c-sharp-api/master/sample_image.png)
+
+In the above image,
+    domain name : **chandankr**   
+    api key     : **abrakadabra**
 
 
 Examples
