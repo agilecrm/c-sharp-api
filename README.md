@@ -4,7 +4,8 @@ Agile CRM is a new breed CRM. You can sign up @ [AgileCRM.com](https://www.agile
 
 Requirements
 ------------
-C# 3.0 with .NET 3.5 or later.
+1. C# 3.0 with .NET 3.5 or later.
+2. Any JSON library. There's many available over the internet. One of them is [Json.NET] (http://james.newtonking.com/pages/json-net.aspx).
 
 BASICS
 ------
