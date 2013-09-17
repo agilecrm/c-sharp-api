@@ -131,6 +131,23 @@ In the above image,
         Domain Name : chandankr   
         Api Key     : abrakadabra
 
+So you have to update your
+
+            using System;
+            using System.Net;
+            using System.Web;
+            using System.IO;
+            using System.Security.Cryptography.X509Certificates;
+
+            public class Agile: ICertificatePolicy 
+            {
+            /*******Please insert your Domain Name and Api Key here*********/
+            const string domain = "chandankr";
+            const string apiKey = "abrakadabra";
+            /***************************************************************/ 
+            .
+            .
+
 
 Examples
 --------
