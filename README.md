@@ -7,7 +7,7 @@ Requirements
 
 1. C# 3.0 with .NET 3.5 or later.
 
-2. A JSON library. C# doesn't provide inbuilt libraries to manipulate json data, so you can use any external library available. One of them is [Json.NET] (http://james.newtonking.com/pages/json-net.aspx).
+2. Any JSON library. There's many available over the internet. One of them is [Json.NET] (http://james.newtonking.com/pages/json-net.aspx).
 
 
 BASICS
