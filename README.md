@@ -117,6 +117,12 @@ This is to retrieve the workflow of the user.
 #####11.1 `string Agile.GetGadgetTemplate(string gadget)`   
 This is used to return the template of the gadget with name `gadget`.
 
+Domain and Key
+--------------
+
+![Alt text] (https://raw.github.com/agilecrm/c-sharp-api/master/sample_image.png)
+
+
 Examples
 --------
 
