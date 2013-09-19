@@ -15,8 +15,8 @@ Requirements
 
 In the above image,  
 
-        Domain Name : chandankr   
-        Api Key     : abrakadabra
+        Domain Name : mycompany
+        Api Key     : myagilecrmapikey
 
 So you have to update your
 
