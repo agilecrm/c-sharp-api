@@ -13,7 +13,7 @@ Requirements
 
 ![Finding Domain name and api key] (https://raw.github.com/agilecrm/c-sharp-api/master/sample_image.png)
 
-In the above image,  
+In the above image, api key is present at the "Api & Analytics" tab at `https://mycompany.agilecrm.com/#account-prefs`.
 
         Domain Name : mycompany
         Api Key     : myagilecrmapikey
@@ -28,12 +28,12 @@ So you have to update your
    
             public class Agile: ICertificatePolicy    
             {   
-            /*******Please insert your Domain Name and Api Key here*********/   
-            const string domain = "chandankr";   
-            const string apiKey = "abrakadabra";   
-            /***************************************************************/    
-            .   
-            .   
+              /*******Please insert your Domain Name and Api Key here*********/   
+              const string domain = "mycompany";   
+              const string apiKey = "myagilecrmapikey";   
+              /***************************************************************/    
+              .   
+              .   
 
 
 
