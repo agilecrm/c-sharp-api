@@ -9,6 +9,34 @@ Requirements
 
 2. Any JSON library. There's many available over the internet. One of them is [Json.NET] (http://james.newtonking.com/pages/json-net.aspx).
 
+3. Setting Domain Name and Api Key
+
+![Finding Domain name and api key] (https://raw.github.com/agilecrm/c-sharp-api/master/sample_image.png)
+
+In the above image,  
+
+        Domain Name : chandankr   
+        Api Key     : abrakadabra
+
+So you have to update your
+
+            using System;   
+            using System.Net;   
+            using System.Web;   
+            using System.IO;   
+            using System.Security.Cryptography.X509Certificates;   
+   
+            public class Agile: ICertificatePolicy    
+            {   
+            /*******Please insert your Domain Name and Api Key here*********/   
+            const string domain = "chandankr";   
+            const string apiKey = "abrakadabra";   
+            /***************************************************************/    
+            .   
+            .   
+
+
+
 
 BASICS
 ------
@@ -120,34 +148,6 @@ This is to retrieve the workflow of the user.
 ###11. Gadget Templates
 #####11.1 `string Agile.GetGadgetTemplate(string gadget)`   
 This is used to return the template of the gadget with name `gadget`.
-
-Domain and Key
---------------
-
-![Finding Domain name and api key] (https://raw.github.com/agilecrm/c-sharp-api/master/sample_image.png)
-
-In the above image,  
-
-        Domain Name : chandankr   
-        Api Key     : abrakadabra
-
-So you have to update your
-
-            using System;   
-            using System.Net;   
-            using System.Web;   
-            using System.IO;   
-            using System.Security.Cryptography.X509Certificates;   
-   
-            public class Agile: ICertificatePolicy    
-            {   
-            /*******Please insert your Domain Name and Api Key here*********/   
-            const string domain = "chandankr";   
-            const string apiKey = "abrakadabra";   
-            /***************************************************************/    
-            .   
-            .   
-
 
 Examples
 --------
