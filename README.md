@@ -37,25 +37,6 @@ So you have to update your
 
 
 
-
-BASICS
-------
-
-* Please enter you Api Key and Domain name at begining of the definition of `class Agile`.
-
-* If you login at `https://xyz.agilecrm.com` then your domain name is `xyz`.
-
-* Your api key is present at the "Api & Analytics" tab at `https://xyz.agilecrm.com/#account-prefs`.
-
-* All methods are static.
-
-* Here `email` is a string, representing a *email id*,  which is used to refer a specific contact.
-
-* All method will return a string object which will be a json stringified form. 
-
-* For representation of complex data, we used stringified json format.
-
-
 API's Details
 -------------
 ###1. Contact 
