@@ -142,6 +142,14 @@ Examples
     result = Agile.DeleteContact(email);
 
 
+    //Saving a contact.
+    string contactDetail = "{\"lead_score\":44,  \"tags\":[\"tag1, tag2\"], \"properties\":[{\"type\":\"SYSTEM\", \"name\":\"email\",\"value\":\"contact@mail.org\"}, {\"type\":\"SYSTEM\", \"name\":\"first_name\", \"value\":\"First_name\"}, {\"type\":\"SYSTEM\", \"name\":\"last_name\", \"value\":\"Last_name\"}]}";
+    result = Agile.CreateContact(contactDetail);
+                    OR
+    string contactDetail = @"{""lead_score"":44, ""tags"":[""tag1, tag2""], ""properties"":[{""type"":""SYSTEM"", ""name"":""email"",""value"":""contact@mail.org""}, {""type"":""SYSTEM"", ""name"":""first_name"", ""value"":""First_name""}, {""type"":""SYSTEM"", ""name"":""last_name"", ""value"":""Last_name""}]}";
+    result = Agile.CreateContact(contactDetail);
+
+
     //Adding Score
     result = Agile.AddScore("jobs@apple.com", 12);
 
@@ -176,6 +184,11 @@ Examples
 
     //Get all tasks associated with 'email'.
     result = Agile.GetTasks("jobs@apple.com");
+
+
+    // Creating Tasks
+    string taskJson = "{\"type\":\"CALL\", \"priority_type\":\"HIGH\", \"subject\":\"call him\"}";
+    result = Agile.CreateTask("jobs@apple.com",taskJson);
 
 
     //Get all campaigns associated with 'email'.

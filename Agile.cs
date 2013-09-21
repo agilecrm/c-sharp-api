@@ -31,7 +31,7 @@ public class Agile: ICertificatePolicy
   static public string CreateContact(string contactJson) 
   {
     string nextUrl = "contacts/";
-    string queryString = "contact=" + contactJson;
+    string queryString = "contact=" + System.Uri.EscapeDataString(contactJson);
 
     string result = HttpGet(nextUrl, queryString);
     return result;
@@ -55,7 +55,7 @@ public class Agile: ICertificatePolicy
   static public string CreateTask(string email, string taskJson) 
   {
     string nextUrl = "task/";
-    string queryString = "email=" + email + "&task=" + taskJson;
+    string queryString = "email=" + email + "&task=" + System.Uri.EscapeDataString(taskJson);
 
     string result = HttpGet(nextUrl, queryString);
     return result;
@@ -67,7 +67,7 @@ public class Agile: ICertificatePolicy
   static public string CreateDeals(string email, string deal) 
   {
     string nextUrl = "opportunity/";
-    string queryString = "email=" + email + "&opportunity=" + deal;
+    string queryString = "email=" + email + "&opportunity=" + System.Uri.EscapeDataString(deal);
 
     string result = HttpGet(nextUrl, queryString);
     return result;
@@ -79,7 +79,7 @@ public class Agile: ICertificatePolicy
   static public string AddProperty(string email, string property) 
   {
     string nextUrl = "contacts/add-property/";
-    string queryString = "email=" + email + "&data=" + property;
+    string queryString = "email=" + email + "&data=" + System.Uri.EscapeDataString(property);
 
     string result = HttpGet(nextUrl, queryString);
     return result;
@@ -91,7 +91,7 @@ public class Agile: ICertificatePolicy
   static public string AddNote(string email, string note) 
   {
     string nextUrl = "contacts/add-note/";
-    string queryString = "email=" + email + "&data=" + note;
+    string queryString = "email=" + email + "&data=" + System.Uri.EscapeDataString(note);
 
     string result = HttpGet(nextUrl, queryString);
     return result;
@@ -103,7 +103,7 @@ public class Agile: ICertificatePolicy
   static public string AddCampaign(string email, string campaign) 
   {
     string nextUrl = "contacts/add-campaign/";
-    string queryString = "email=" + email + "&data=" + campaign;
+    string queryString = "email=" + email + "&data=" + System.Uri.EscapeDataString(campaign);
 
     string result = HttpGet(nextUrl, queryString);
     return result;
@@ -291,7 +291,7 @@ public class Agile: ICertificatePolicy
 
       // url = System.Web.HttpUtility.UrlEncode(url);   // Library not provided everywhere, at least at mono.
       //url = System.Uri.EscapeUriString(url);          // Should not be used for encoding whole url.
-      url = System.Uri.EscapeDataString(url);
+      //url = System.Uri.EscapeDataString(url);
       //url = System.Net.WebUtility.UrlEncode(url);
 
       //Console.WriteLine(url);
