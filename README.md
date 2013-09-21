@@ -189,7 +189,7 @@ Examples
     // Creating Tasks
     string taskJson = "{\"type\":\"CALL\", \"priority_type\":\"HIGH\", \"subject\":\"call him\"}";
     result = Agile.CreateTask("jobs@apple.com",taskJson);
-            OR
+                OR
     string taskJson = @"{""type"":""CALL"", ""priority_type"":""HIGH"", ""subject"":""call him""}";
     result = Agile.CreateTask("jobs@apple.com",taskJson);
 
