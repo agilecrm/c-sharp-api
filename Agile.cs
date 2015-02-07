@@ -14,7 +14,7 @@ namespace AgileCRM
     {
         /*******Please insert your Domain Name and Api Key here*********/
         const string agileaccount = "XXXXX";    // login email address for admin
-        const string domain = "XXXXXX";         // agile CRM Domain (ex. if your agile crm domain is foo.agilecrm.com, set this variable to "foo"
+        const string domain = "XXXXXX";         // agile CRM Domain (ex. if your agile crm domain is foo.agilecrm.com, set this variable to "foo")
         const string apiKey = "XXXXXX";         // api key found under "Admin Settings" then "API & Analytics" tab
         /***************************************************************/
 
