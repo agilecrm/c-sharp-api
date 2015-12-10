@@ -36,6 +36,19 @@ public class Agile: ICertificatePolicy
     string result = HttpGet(nextUrl, queryString);
     return result;
   }
+  
+  /*
+   * It update a contact with description 'contactJson'.
+   */
+  static public string UpdateContact(string email,string contactJson) 
+  {
+    string nextUrl = "contact/update/";
+    //string queryString = "contact=" + System.Uri.EscapeDataString(contactJson);
+    string queryString = "email=" + email + "&data=" + System.Uri.EscapeDataString(contactJson);
+
+    string result = HttpGet(nextUrl, queryString);
+    return result;
+  }
 
   /*
    * Returns null if no contact is found otherwise a success status.
