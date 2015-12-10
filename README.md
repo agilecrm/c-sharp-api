@@ -153,8 +153,8 @@ Examples
     result = Agile.CreateContact(contactDetail);
     
     
-    //Update a contact.
-   string contactDetail = @"{""email"":""natali@hotmail.com"",""tags"":""tag3, tag2"", ""first_name"":""April"", ""last_name"":""Woodlif"", ""TeamNumbers"":""5"", ""text sample test"":""text custom"", ""DOP"":""1449599400""}";
+    //Update a contact by email.
+    string contactDetail = @"{""email"":""pintu@hotmail.com"", ""first_name"":""April"", ""last_name"":""Woodlif"",""TeamNumbers"":""5"", ""text sample test"":""text custom"", ""DOP"":""1449599400""}";
     result = Agile.UpdateContact("pintu@hotmail.com",contactDetail);
     
     
