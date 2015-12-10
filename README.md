@@ -46,7 +46,10 @@ This is used to retrieve the contact details of a person. It will return in json
 #####1.2 `string Agile.CreateContact(string contactJson)`  
 This is used to create a new contact with properties mentioned in `contactJson`.
 
-#####1.3 `string Agile.DeleteContact(string email)`  
+#####1.3 `string Agile.UpdateContact(string email,string contactJson)`
+This is used to update a contact with `contactDetail`. Please check example for data formate of contactJson.
+
+#####1.4 `string Agile.DeleteContact(string email)`  
 This is used to delete contact details of the person.
 
 ###2. Property
@@ -148,6 +151,13 @@ Examples
                     OR
     string contactDetail = @"{""lead_score"":44, ""tags"":[""tag1"", ""tag2""], ""properties"":[{""type"":""SYSTEM"", ""name"":""email"",""value"":""contact@mail.org""}, {""type"":""SYSTEM"", ""name"":""first_name"", ""value"":""First_name""}, {""type"":""SYSTEM"", ""name"":""last_name"", ""value"":""Last_name""}]}";
     result = Agile.CreateContact(contactDetail);
+    
+    
+    //Update a contact.
+   string contactDetail = @"{""email"":""natali@hotmail.com"",""tags"":""tag3, tag2"", ""first_name"":""April"", ""last_name"":""Woodlif"", ""TeamNumbers"":""5"", ""text sample test"":""text custom"", ""DOP"":""1449599400""}";
+    result = Agile.UpdateContact("pintu@hotmail.com",contactDetail);
+    
+    // Note TeamNumbers,text sample test and dop are number, text and date type custom field. date has epoch time in seconds.
 
 
     //Adding Score
