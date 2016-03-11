@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Created by SharpDevelop.
  * User: graut
  * Date: 04-03-2016
@@ -11,7 +11,7 @@ using System.Net;
 using System.Web;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-namespace HelloWorld1
+namespace AgileCRMAPI
 {
 	/// <summary>
 	/// Description of AgileCRM.
@@ -23,14 +23,14 @@ namespace HelloWorld1
 		}
 		
 		/*******Please insert your Domain Name and email Api Key here*********/
-		const string domain = "jason";
-		const string email = "jason@agilecrm.com";
-		const string apiKey = "******************";
+		const string domain = "your_domain";
+		const string email = "your_agilecrm_email";
+		const string apiKey = "your_rest_api_key";
 		/***************************************************************/
 
 		const string domainUrl = "https://" + domain + ".agilecrm.com/dev/api/";
 		
-		private static string agileCRM(string nextUrl, string method, string data)
+		private static string agileCRM(string nextUrl, string method, string data, string contenttype)
 		{
 			try {
 				string url = domainUrl + nextUrl; 
@@ -44,7 +44,7 @@ namespace HelloWorld1
 					request.ContentLength = data.Length;
 				
 				request.Method = method;
-				request.ContentType = "application/json";
+				request.ContentType = contenttype;
 				request.Accept = "application/json";
 				
 				request.Headers.Add("Authorization", "Basic " + encoded);
@@ -124,23 +124,58 @@ namespace HelloWorld1
 		}
 		static void Main(string[] args)
 		{
-			// Get Contact by Email
-			string s = agileCRM("contacts/search/email/samson@walt.ltd", "GET", null);
+			 Get Contact by Email
+			 string s1 = agileCRM("contacts/search/email/samson@walt.ltd", "GET", null,"application/json");
 			
-			Console.WriteLine(s);
+			 Console.WriteLine(s1);
 				
 			// Create a Contact
 			
 			string contactDetail = "{\"lead_score\":44,  \"tags\":[\"tag1\", \"tag2\"], \"properties\":[{\"type\":\"SYSTEM\", \"name\":\"email\",\"value\":\"jason123@gmail.com\"}, {\"type\":\"SYSTEM\", \"name\":\"first_name\", \"value\":\"First_name\"}, {\"type\":\"SYSTEM\", \"name\":\"last_name\", \"value\":\"Last_name\"}]}";
 			
-			string s1 = agileCRM("contacts", "POST", contactDetail);
+			string s2 = agileCRM("contacts", "POST", contactDetail,"application/json");
 			
-			Console.WriteLine(s1);
+			Console.WriteLine(s2);
 			
 			// Delete a contact
-	 		agileCRM("contacts/5765003219042304", "DELETE", null);
+			agileCRM("contacts/5765003219042304", "DELETE", null,"application/json");
+	 		
+			// Update Contacts
+	 		
+			string updatecontactDetail = "{\"id\":5749641194766336, \"properties\":[{\"type\":\"SYSTEM\", \"name\":\"email\",\"value\":\"pbx.kumar@gmail.com\"}, {\"type\":\"SYSTEM\", \"name\":\"first_name\", \"value\":\"PBX\"}, {\"type\":\"SYSTEM\", \"name\":\"last_name\", \"value\":\"Los\"}]}";
+
+			string s3 = agileCRM("contacts/edit-properties", "PUT", updatecontactDetail,"application/json");
+
+			Console.WriteLine(s3);
 			
-	
+			// Update score
+			string updatecontactScore = "{\"id\":5749641194766336, \"lead_score\":150}";
+
+			string s4 = agileCRM("contacts/edit/lead-score", "PUT", updatecontactScore,"application/json");
+
+			Console.WriteLine(s4);
+			
+			// Update star
+			string updatecontactStar = "{\"id\":5749641194766336, \"star_value\":5}";
+
+			string s5 = agileCRM("contacts/edit/add-star", "PUT", updatecontactStar,"application/json");
+
+			Console.WriteLine(s5);
+			
+			// Update tags
+			string updatecontactTags = "{\"id\":5749641194766336, \"tags\":[\"tag1\", \"tag2\"]}";
+
+			string s6 = agileCRM("contacts/edit/tags", "PUT", updatecontactTags,"application/json");
+
+			Console.WriteLine(s6);
+			
+			// Delete tags
+			string deletecontactTags = "{\"id\":5749641194766336, \"tags\":[\"tag1\", \"tag2\"]}";
+
+			string s7 = agileCRM("contacts/delete/tags", "PUT", deletecontactTags,"application/json");
+
+			Console.WriteLine(s7);
+			
 			Console.WriteLine("Done");
 		}
 	}
