@@ -1,6 +1,59 @@
-Agile CRM C# API
-================
-Agile CRM is a new breed CRM. You can sign up @ [AgileCRM.com](https://www.agilecrm.com).  
+Agile CRM C# API 
+=================
+
+[Agile CRM] (https://www.agilecrm.com/) is a new breed CRM software with sales and marketing automation.
+
+Table of contents
+---------------
+
+**[Requirements](#requirements)**
+
+**[1 Contact](#1-contact)**
+  * [1.1 To create a contact](#11-to-create-a-contact)
+  * [1.2 To fetch contact data](#12-to-fetch-contact-data)
+  * [1.3 To delete a contact](#13-to-delete-a-contact)
+  * [1.4 To update a contact](#14-to-update-a-contact)
+  
+
+**[2. Company](#2-company)**
+  * [2.1 To create a company](#21-to-create-a-company)
+  * [2.2 To get a company](#22-to-get-a-company)
+  * [2.3 To delete a company](#23-to-delete-a-company)
+  * [2.4 To update a company](#24-to-update-a-company)
+  * [2.5 Update properties of a company (partial update)](#25-update-properties-of-a-company-partial-update)best to use against update company :+1:
+  * [2.6 Update star value of a company](#26-update-star-value-of-a-company)
+  * [2.7 Get list of companies](#27-get-list-of-companies)
+  * [2.8 Search Contacts/Companies](#28-search-contactscompanies)
+
+**[3. Deal (Opportunity)](#3-deal-opportunity)**
+  * [3.1 To create a deal](#31-to-create-a-deal)
+  * [3.2 To get a deal](#32-to-get-a-deal)
+  * [3.3 To delete a deal](#33-to-delete-a-deal)
+  * [3.4 To update deal](#34-to-update-deal)
+  * [3.5 To update deal (Partial update)](#35-to-update-deal-partial-update)best to use against update deal :+1:
+  * [3.6 Get deals related to specific contact by contact id](#36-get-deals-related-to-specific-contact-by-contact-id)
+
+**[4. Note](#4-note)**
+  * [4.1 To create a note](#41-to-create-a-note)
+  * [4.2 To get all notes related to specific contact](#42-to-get-all-notes-related-to-specific-contact)
+  * [4.3 To update a note](#43-to-update-a-note)
+  
+**[5. Task](#5-task)**
+  * [5.1 To create a task](#51-to-create-a-task)
+  * [5.2 To get a task](#52-to-get-a-task)
+  * [5.3 To delete a task](#53-to-delete-a-task)
+  * [5.4 To update a task](#54-to-update-a-task)
+
+**[6. Event](#6-event)**
+  * [6.1 To create a event](#61-to-create-a-event)
+  * [6.2 To delete a event](#62-to-delete-a-event)
+  * [6.3 To update a event](#63-to-update-a-event)
+
+**[7. Deal Tracks and Milestones](#7-deal-tracks-and-milestones)**
+  * [7.1 To create a track](#71-to-create-a-track)
+  * [7.2 To get all tracks](#72-to-get-all-tracks)
+  * [7.3 To update track](#73-to-update-track)
+  * [7.4 To delete a track](#74-to-delete-a-track)  
 
 Requirements
 ------------
@@ -17,199 +70,79 @@ In the above image, api key is present at the "Api & Analytics" tab at `https://
 
         Domain Name : mycompany
         Api Key     : myagilecrmapikey
+        Email       : myagilecrmemail
 
-So you have to update your
+So you have to update your `https://github.com/agilecrm/c-sharp-api/blob/master/AgileCRM.cs`
 
-            using System;   
-            using System.Net;   
-            using System.Web;   
-            using System.IO;   
-            using System.Security.Cryptography.X509Certificates;   
-   
-            public class Agile: ICertificatePolicy    
-            {   
-              /*******Please insert your Domain Name and Api Key here*********/   
-              const string domain = "mycompany";   
-              const string apiKey = "myagilecrmapikey";   
-              /***************************************************************/    
-              .   
-              .   
+       using System;
+       using System.Net;
+       using System.Web;
+       using System.IO;
+       using System.Security.Cryptography.X509Certificates;
+       namespace AgileAPI
+       {
+	    /// <summary>
+	    /// Description of AgileCRM.
+	    /// </summary>
+	    public class AgileCRM
+	    {
+		public AgileCRM()
+		{
+		}
+		
+		/*******Please insert your Domain Name and email Api Key here*********/
+		const string domain = "jason";
+		const string email = "jason@agilecrm.com";
+		const string apiKey = "******************";
+		/***************************************************************/  
 
 
 
 API's Details
 -------------
-###1. Contact 
-#####1.1 `string Agile.GetContact(string email)`  
-This is used to retrieve the contact details of a person. It will return in json format.
+## 1. Contact
+#### 1.1 To create a contact 
 
-#####1.2 `string Agile.CreateContact(string contactJson)`  
-This is used to create a new contact with properties mentioned in `contactJson`.
+- [**Acceptable request representation for contact**](https://github.com/agilecrm/rest-api#acceptable-request-representation)
 
-#####1.3 `string Agile.UpdateContact(string email,string contactJson)`
-This is used to update a contact with `contactJson`. Please check example for data formate of contactJson.
+```javascript
+string contactDetail = "{\"lead_score\":44,  \"tags\":[\"tag1\", \"tag2\"], \"properties\":[{\"type\":\"SYSTEM\", \"name\":\"email\",\"value\":\"jason123@gmail.com\"}, {\"type\":\"SYSTEM\", \"name\":\"first_name\", \"value\":\"First_name\"}, {\"type\":\"SYSTEM\", \"name\":\"last_name\", \"value\":\"Last_name\"}]}";
+			
+string result = agileCRM("contacts", "POST", contactDetail);
+			
+Console.WriteLine(result);
+```
 
-#####1.4 `string Agile.DeleteContact(string email)`  
-This is used to delete contact details of the person.
+#### 1.2 To fetch contact data
 
-###2. Property
-#####2.1 `string Agile.AddProperty(string email, string property)`  
-This is used to add/modify the property of a contact. Here `property` is a json object containing property data and value to be added.
+###### by id
 
-###3. Score
-#####3.1 `string Agile.GetScore(string email)`  
-This is to retrieve the score of a contact.
+```javascript
+// Get contact by ID
+string result = agileCRM("contacts/5765003219042304", "GET", null);
+```
+###### by email
 
-#####3.2 `string Agile.AddScore( string email, int score)`  
-This is to increment score of a contact by `score` units.
+```javascript
+// Get contact by Email
+string result = agileCRM("contacts/search/email/samson@walt.ltd", "GET", null);
+```
 
-#####3.3 `string Agile.SubtractScore( string email, int score)`  
-This is to decrement score of a contact by `score` units.
+#### 1.3 To delete a contact
 
-###4. Notes
-#####4.1 `string Agile.GetNotes(string email)`   
-This is to retrieve notes of a contact.
+```javascript
+// Delete a contact
+agileCRM("contacts/5765003219042304", "DELETE", null);
+```
 
-#####4.2 `string Agile.AddNote(string email, string note)`   
-This is used to add a note represented with a stringified json object to a contact. Here `note` is a json object containing the subject and description field of the note.
+#### 1.4 To update a contact 
 
-###5. Tags
-#####5.1 `string Agile.GetTags(string email)`   
-This is to retrieve tags of a contact.
+- [**Acceptable request representation for contact**](https://github.com/agilecrm/rest-api#acceptable-request-representation-1)
 
-#####5.2 `string Agile.AddTags(string email, string tags)`   
-This is to add tags to a contact. Here,   
-
-    string tags = "tag1, tag2, tag3";
-         (or) 
-    string tags = "tag1 tag2 tag3";
-
-#####5.3 `string Agile.RemoveTags(string email, string tags)`   
-This is to remove tags referred by `tags` from a contact. Here,   
-
-    string tags = "tag1, tag2, tag3"; 
-        (or)
-    string tags = "tag1 tag2 tag3";
-
-###6. Tasks
-#####6.1 `string Agile.GetTasks(string email)`   
-This is to retrieve tasks of a contact.
-
-#####6.2 `string Agile.CreateTask(string email, string taskJson)`   
-This is used to add a task with property mentioned in `taskJson` to a contact. Here task is passed in a stringified json format.
-
-###7. Deals
-#####7.1 `string Agile.GetDeals(string email)`   
-This is to retrieve all the deals of a contact.
-
-#####7.2 `string Agile.CreateDeals(string email, string deal)`   
-This is used to add detail about a deal referred by `deal` to a contact. Here 'opportunity' is a strinfied json object, where original json object is in a form of :  
-    
-    {   
-    "name": "Deal sales", "description": "brief description on deal",   
-    "expected_value": "100", "milestone":"won",    
-    "close_date": data as epoch time   
-    }
-
-###8. Campaigns
-#####8.1 `string Agile.GetCampaigns(string email)`   
-This is to retrieve details of all campaigns associated with a contact.
-
-#####8.2 `string Agile.AddCampaign(string email, string campaign)`   
-This is used to add campaign based on contact email to already existing workflow. 
-
-#####8.3 `string Agile.GetCampaignLogs(string email)`   
-This is to retrieve logs of all campaings associated with a contact.
-
-###9. Contact & Workflow
-#####9.1 `string Agile.SubscribeContact(long contactId, long workflowId)`   
-Enrolls a contact with `contactId` to a particular workflow with `workflowId`.
-
-###10. Workflows
-#####10.1 `string Agile.GetWorkflows()`   
-This is to retrieve the workflow of the user.
-
-###11. Gadget Templates
-#####11.1 `string Agile.GetGadgetTemplate(string gadget)`   
-This is used to return the template of the gadget with name `gadget`.
-
-Examples
---------
-
-    //Fetching Contact detail from email in stringified json format.
-    string result = Agile.GetContact("jobs@apple.com");
-    
-    
-    //Deleting a contact by email.
-    string email = "dupemail@outlook.com";
-    result = Agile.DeleteContact(email);
-
-
-    //Saving a contact.
-    string contactDetail = "{\"lead_score\":44,  \"tags\":[\"tag1\", \"tag2\"], \"properties\":[{\"type\":\"SYSTEM\", \"name\":\"email\",\"value\":\"contact@mail.org\"}, {\"type\":\"SYSTEM\", \"name\":\"first_name\", \"value\":\"First_name\"}, {\"type\":\"SYSTEM\", \"name\":\"last_name\", \"value\":\"Last_name\"}]}";
-    result = Agile.CreateContact(contactDetail);
-                    OR
-    string contactDetail = @"{""lead_score"":44, ""tags"":[""tag1"", ""tag2""], ""properties"":[{""type"":""SYSTEM"", ""name"":""email"",""value"":""contact@mail.org""}, {""type"":""SYSTEM"", ""name"":""first_name"", ""value"":""First_name""}, {""type"":""SYSTEM"", ""name"":""last_name"", ""value"":""Last_name""}]}";
-    result = Agile.CreateContact(contactDetail);
-    
-    
-    //Update a contact by email.
-    string contactDetail = @"{""email"":""pintu@hotmail.com"", ""first_name"":""April"", ""last_name"":""Woodlif"",""TeamNumbers"":""5"", ""text sample test"":""text custom"", ""DOP"":""1449599400""}";
-    result = Agile.UpdateContact("pintu@hotmail.com",contactDetail);
-    
-    
-    //Adding Score
-    result = Agile.AddScore("jobs@apple.com", 12);
-
-
-    //Subtracting Score
-    result = Agile.SubtractScore ("jobs@apple.com", 12);
-
-
-    //Adding tag.
-    result = Agile.AddTags("jobs@apple.com", "hihoho");
-
-
-    //Removing tag.
-    result = Agile.RemoveTags("jobs@apple.com", "hohoho");
-
-
-    //Subscribe client with id 2001 to campaign #10001.
-    result = Agile.SubscribeContact(2001,10001);
-
-
-    //Get score of contact associated with 'email'.
-    result = Agile.GetScore("jobs@apple.com");
-
-
-    //Get all notes associated with 'email'.
-    result = Agile.GetNotes("jobs@apple.com");
-
-
-    //Get all tags associated with 'email'.
-    result = Agile.GetTags("jobs@apple.com");
-
-
-    //Get all tasks associated with 'email'.
-    result = Agile.GetTasks("jobs@apple.com");
-
-
-    // Creating Tasks
-    string taskJson = "{\"type\":\"CALL\", \"priority_type\":\"HIGH\", \"subject\":\"call him\"}";
-    result = Agile.CreateTask("jobs@apple.com",taskJson);
-                OR
-    string taskJson = @"{""type"":""CALL"", ""priority_type"":""HIGH"", ""subject"":""call him""}";
-    result = Agile.CreateTask("jobs@apple.com",taskJson);
-
-
-    //Get all campaigns associated with 'email'.
-    result = Agile.GetCampaigns("jobs@apple.com");
-
-
-    //Get all log of campaigns associated with 'email'.
-    result = Agile.GetCampaignsLogs("jobs@apple.com");
-
-
-    //Get all workflow of the domain.
-    result = Agile.GetWorkflows();
-
+```javascript
+string updatecontactDetail = "{\"id\":5765003219042304, \"properties\":[{\"type\":\"SYSTEM\", \"name\":\"email\",\"value\":\"jason123@gmail.com\"}, {\"type\":\"SYSTEM\", \"name\":\"first_name\", \"value\":\"First_name\"}, {\"type\":\"SYSTEM\", \"name\":\"last_name\", \"value\":\"Last_name\"}]}";
+			
+string result = agileCRM("contacts/edit-properties", "PUT", updatecontactDetail);
+			
+Console.WriteLine(result);
+```
