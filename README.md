@@ -44,7 +44,7 @@ Requirements
 
 3. Setting Domain Name and Api Key
 
-![Finding Domain name and api key] (https://github.com/agilecrm/c-sharp-api/blob/master/Agile_CRM_API_Key_New.jpg)
+![Finding Domain name, email and api key] (https://github.com/agilecrm/rest-api/blob/master/api/Agile_CRM_API_Key_New.jpg)
 
 In the above image, api key is present at the "Api & Analytics" tab at `https://mycompany.agilecrm.com/#account-prefs`.
 
@@ -298,5 +298,68 @@ Console.WriteLine(s1);
 ```javascript
 string s1 = agileCRM("opportunity/5733975435771904", "DELETE", null,"application/json");
 	
+Console.WriteLine(s1);
+```
+
+## 4. Note
+#### 4.1 Create a note and relate that to contacts
+
+```javascript
+string noteDetail = "{\"subject\":\"Note subject hello \",\"description\":\"Note description gone successfull after contact paid us\", \"contact_ids\":[\"5696538890207232\", \"5758948741218306\"]}";
+
+string s1 = agileCRM("notes", "POST", noteDetail,"application/json");
+
+Console.Write(s1);
+```
+
+#### 4.2 Add note to a contact using email ID
+
+```javascript
+string noteDetailByEmail ="email=agilecrm@test.com123&note={\"subject\":\"test\",\"description\":\"testing description\"}";
+
+string result = agileCRM("contacts/email/note/add", "POST", noteDetailByEmail,"application/x-www-form-urlencoded");
+
+Console.WriteLine(result);
+```
+
+#### 4.3 Gets notes related to specific contact
+
+```javascript
+string s1 = agileCRM("contacts/5688267051630592/notes", "GET", null,"application/json");
+
+Console.WriteLine(s1);
+```
+
+#### 4.4 Delete a specific note from specific contact
+
+```javascript
+string s1 = agileCRM("contacts/5688267051630592/notes/5688267051630600", "DELETE", null,"application/json");
+```
+
+#### 4.5 Create note to a deal
+
+```javascript
+string noteDetail = "{\"subject\":\"Note subject hello \",\"description\":\"Note description gone successfull after contact paid us\", \"deal_ids\":[\"5728337217454080\", \"5758948741218306\"]}";
+	
+string s1 = agileCRM("opportunity/deals/notes", "POST", noteDetail,"application/json");
+
+Console.Write(s1);
+```
+
+#### 4.6 Update note to a deal
+
+```javascript
+string noteDetail = "{\"id\":\"5697894489260032\",\"subject\":\"Note subject hello \",\"description\":\"Note description gone successfull after contact paid us\", \"deal_ids\":[\"5728337217454080\", \"5758948741218306\"]}";
+
+string s1 = agileCRM("opportunity/deals/notes", "PUT", noteDetail,"application/json");
+
+Console.Write(s1);
+```
+
+#### 4.7 Gets notes related to specific deal
+
+```javascript
+string s1 = agileCRM("opportunity/5728337217454080/notes", "GET", null,"application/json");
+
 Console.WriteLine(s1);
 ```
