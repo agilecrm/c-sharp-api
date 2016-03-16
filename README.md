@@ -35,6 +35,15 @@ Table of contents
   * [5 Get deal by ID](#35-get-deal-by-id)
   * [6 Delete deal by ID](#36-delete-deal-by-id)
 
+**[4. Note ](#4-note)**
+  * [1 Create a note and relate that to contacts](#41-create-a-note-and-relate-that-to-contacts)
+  * [2 Add note to a contact using email ID](#42-add-note-to-a-contact-using-email-id)
+  * [3 Gets notes related to specific contact](#43-gets-notes-related-to-specific-contact)
+  * [4 Delete a specific note from specific contact](#44-delete-a-specific-note-from-specific-contact)
+  * [5 Create note to a deal](#45-create-note-to-a-deal)
+  * [6 Update note to a deal](#46-update-note-to-a-deal)
+  * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal)
+
 Requirements
 ------------
 
@@ -44,7 +53,7 @@ Requirements
 
 3. Setting Domain Name and Api Key
 
-![Finding Domain name, email and api key] (https://github.com/agilecrm/rest-api/blob/master/api/Agile_CRM_API_Key_New.jpg)
+![Finding Domain name, email and api key] (https://raw.githubusercontent.com/agilecrm/c-sharp-api/master/AgileCRMapi.png)
 
 In the above image, api key is present at the "Api & Analytics" tab at `https://mycompany.agilecrm.com/#account-prefs`.
 
