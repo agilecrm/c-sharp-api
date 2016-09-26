@@ -49,9 +49,9 @@ Table of contents
   * [2 Add task to a contact using email ID](#52-add-task-to-a-contact-using-email-id)
   * [3 Gets tasks related to specific contact](#53-gets-tasks-related-to-specific-contact)
   * [4 Gets tasks by filter](#54-gets-tasks-by-filter)
-  * [5 Get task by ID](#55-get-task-by-ID)
-  * [6 Delete task by ID](#56-delete-task-by-ID)
-  * [7 Update task by ID](#56-update-task-by-ID)
+  * [5 Get task by ID](#55-get-task-by-id)
+  * [6 Delete task by ID](#56-delete-task-by-id)
+  * [7 Update task by ID](#57-update-task-by-id)
   
 
 Requirements
