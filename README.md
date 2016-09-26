@@ -43,6 +43,16 @@ Table of contents
   * [5 Create note to a deal](#45-create-note-to-a-deal)
   * [6 Update note to a deal](#46-update-note-to-a-deal)
   * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal)
+  
+**[5. Task ](#4-task)**
+  * [1 Create a task and relate that to contacts](#51-create-a-task-and-relate-that-to-contacts)
+  * [2 Add task to a contact using email ID](#52-add-task-to-a-contact-using-email-id)
+  * [3 Gets tasks related to specific contact](#53-gets-tasks-related-to-specific-contact)
+  * [4 Gets tasks by filter](#54-gets-tasks-by-filter)
+  * [5 Get task by ID](#55-get-task-by-ID)
+  * [6 Delete task by ID](#56-delete-task-by-ID)
+  * [7 Update task by ID](#56-update-task-by-ID)
+  
 
 Requirements
 ------------
@@ -373,6 +383,83 @@ Console.Write(s1);
 
 ```javascript
 string s1 = agileCRM("opportunity/5728337217454080/notes", "GET", null,"application/json");
+
+Console.WriteLine(s1);
+```
+
+## 5. Task
+#### 5.1 Create a task and relate that to contacts
+
+- [**Reference : **](https://github.com/agilecrm/rest-api#54-create-a-task)
+
+```javascript
+string taskDetail = "{\"progress\": \"29\",\"is_complete\": \"false\",\"subject\": \"Need to contact vendor\",\"type\": \"MEETING\",\"due\": 1459319400,\"task_ending_time\": \"12:00\",\"priority_type\": \"HIGH\",\"status\": \"YET_TO_START\",\"taskDescription\": \"This is very important. We need to discuss with few vendors about the product.\",\"contacts\": [\"5688066194800640\"],\"deal_ids\": [\"5638839829790720\"]}";
+
+string s1 = agileCRM("tasks", "POST", taskDetail,"application/json");
+
+Console.Write(s1);
+```
+
+#### 5.2 Add task to a contact using email ID
+
+- [**Reference : **](https://github.com/agilecrm/rest-api#55-create-a-task-based-on-contact-email)
+
+```javascript
+string taskDetail = "{\"progress\": \"29\",\"is_complete\": \"false\",\"subject\": \"Need to contact vendor\",\"type\": \"MEETING\",\"due\": 1459319400,\"task_ending_time\": \"12:00\",\"priority_type\": \"HIGH\",\"status\": \"YET_TO_START\",\"taskDescription\": \"This is very important. We need to discuss with few vendors about the product.\"}";
+
+string s1 = agileCRM("tasks/email/samson@walt.ltd", "POST", taskDetail,"application/json");
+
+Console.Write(s1);
+```
+
+#### 5.3 Gets tasks related to specific contact
+
+```javascript
+
+string s1 = agileCRM("contacts/5688066194800640/tasks", "GET", null,"application/json");
+
+// ID is contact ID
+Console.Write(s1);
+```
+
+#### 5.4 Gets tasks by filter
+
+- [**Reference : **](https://github.com/agilecrm/rest-api#52-get-the-list-of-tasks-based-on-given-filters)
+
+```javascript
+
+string s1 = agileCRM("tasks/based?pending=true&criteria=CATEGORY&type=EMAIL&page_size=10", "GET", null,"application/json");
+
+Console.Write(s1);
+```
+
+#### 5.5 Get task by ID
+
+```javascript
+
+string s1 = agileCRM("tasks/5752673240350720", "GET", null,"application/json");
+
+Console.Write(s1);
+```
+
+#### 5.6 Delete task by ID
+
+```javascript
+
+string s1 = agileCRM("tasks/5752673240350720", "DELETE", null,"application/json");
+
+Console.Write(s1);
+```
+
+#### 5.7 Update task by ID
+
+- [**Reference : **](https://github.com/agilecrm/rest-api#56-update-a-task-partial-update)
+
+```javascript
+
+string updateTaskDetail = "{\"id\": \"5752673240350720\",\"subject\": \"sample\",\"due\": 1458941500,\"type\":\"EMAIL\"}";
+
+string s1 = agileCRM("tasks/partial-update", "PUT", updateTaskDetail,"application/json");
 
 Console.WriteLine(s1);
 ```
