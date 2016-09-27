@@ -44,7 +44,7 @@ Table of contents
   * [6 Update note to a deal](#46-update-note-to-a-deal)
   * [7 Gets notes related to specific deal](#47-gets-notes-related-to-specific-deal)
   
-**[5. Task ](#4-task)**
+**[5. Task ](#5-task)**
   * [1 Create a task and relate that to contacts](#51-create-a-task-and-relate-that-to-contacts)
   * [2 Add task to a contact using email ID](#52-add-task-to-a-contact-using-email-id)
   * [3 Gets tasks related to specific contact](#53-gets-tasks-related-to-specific-contact)
